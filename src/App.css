@@ -2,37 +2,94 @@
   text-align: center;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.movies-grid {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  justify-content: space-between;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+.movie-card {
+  display: grid;
+  margin: 1rem;
+  box-sizing: border-box;
+  position: relative;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+.movie-title {
+  height: 3rem;
+  margin-top: 1rem;
 }
 
-.App-link {
-  color: #61dafb;
+.movie-poster {
+  width: 100%;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.movie-button {
+  position: absolute;
+  right: 0rem;
+  font-size: 2rem;
+  width: 3rem;
+  height: 3rem;
+  opacity: 75%;
+}
+
+.header {
+  display: grid;
+  grid-template-columns: 5fr 1fr;
+  text-align: left;
+  background-color: lightblue;
+  height: 4rem;
+}
+
+ul.topmenu {
+  display: inline;
+  text-align: left;
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
+
+li.menuitem {
+  text-align: left;
+  display: inline;
+  padding-left: 2rem;
+  text-decoration: none;
+  line-height: 4rem;
+}
+
+li.menuitem > a {
+  text-decoration: none;
+  color: blue;
+  font-size: 1.5rem;
+}
+
+.logo {
+  display: grid;
+  align-self: center;
+  justify-self: right;
+  width: 50%;
+  padding-right: 2rem;
+}
+
+.userlist {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-gap: 1rem;
+  margin-top: 2rem;
+  margin-left: 1rem;
+  margin-right: 1rem;
+}
+
+.userimage {
+  width: 100%;
+  border-radius: 1rem;
+}
+
+.username {
+  font-size: 2rem;
+  font-weight: bold;
+}
+
+.usernote {
+  font-size: 0.75rem;
 }
