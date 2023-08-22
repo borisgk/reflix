@@ -1,4 +1,4 @@
-# Getting Started with Create React App
+# Reflix project
 
 A working copy, but there is much to be desired.
 

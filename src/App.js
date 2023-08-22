@@ -23,24 +23,12 @@ function App() {
     setSomeMovies(data.results)
   }
 
-
   // Load some movies information at the application start
   useEffect(() => {
-
-    // Get some user info - this is just for fun
-    async function getUserInfo(userID) {
-      let response = await fetch(`https://api.themoviedb.org/3/person/${userID}?language=en-US`, Constants.API_OPTIONS)
-      let data = await response.json()
-      userInfo[userID] = data
-    }
-    for (let user of Constants.USERS) {
-      getUserInfo(user.id)
-    }
-
     getSomeMovies()
-
   }, [])
 
+  // Update movies on change in users - rent or unrent
   useEffect(() => {
     getSomeMovies()
   }, users)
@@ -67,7 +55,6 @@ function App() {
       let filtered = newRentals.filter(r => {
         return r.id != movie.id
       })
-      console.log(filtered)
       let newUsers = [...users]
       newUsers.find(u => u.id === user.id).rentals = [...filtered]
       setUsers(newUsers)
