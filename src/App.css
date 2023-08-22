@@ -18,19 +18,32 @@
 .movie-title {
   height: 3rem;
   margin-top: 1rem;
+  text-align: center;
 }
 
 .movie-poster {
   width: 100%;
+  aspect-ratio: 0.66;
+  background-position: 0%;
+  background-size: cover;
 }
 
 .movie-button {
   position: absolute;
-  right: 0rem;
+  right: 0.25rem;
+  top: 0.25rem;
   font-size: 2rem;
   width: 3rem;
   height: 3rem;
-  opacity: 75%;
+  border-radius: 80%;
+  background-color: lightblue;
+  border: none;
+}
+
+.movie-button:hover {
+  background-color: blue;
+  border: 2px solid white;
+  cursor: pointer;
 }
 
 .header {
@@ -49,15 +62,18 @@ ul.topmenu {
   padding: 0;
 }
 
-li.menuitem {
+.menuitem {
   text-align: left;
   display: inline;
   padding-left: 2rem;
   text-decoration: none;
   line-height: 4rem;
+  font-weight: bold;
+  color: blue;
+  font-size: 1.5rem;
 }
 
-li.menuitem > a {
+.menuitem > a {
   text-decoration: none;
   color: blue;
   font-size: 1.5rem;
@@ -88,8 +104,84 @@ li.menuitem > a {
 .username {
   font-size: 2rem;
   font-weight: bold;
+  text-align: center;
+  text-decoration: none;
 }
 
 .usernote {
   font-size: 0.75rem;
+  text-align: center;
+  display: flex;
+  align-self: center;
+  justify-content: center;
+  text-decoration: none;
+}
+
+.userinfo {
+  margin: 1rem;
+}
+
+.userimg {
+  float: left;
+  margin-right: 1rem;
+  border-radius: 1rem;
+}
+
+.userbio {
+  line-height: 200%;
+}
+
+h1.section-heading {
+  text-align: center;
+}
+
+/* SEARCH BAR */
+
+.searchbar {
+  height: 6rem;
+  background-color: lightblue;
+  display: grid;
+  grid-template-columns: 5fr 1fr;
+}
+
+.searchbox {
+  font-size: 2rem;
+  height: 4rem;
+  align-self: center;
+  margin-left: 1rem;
+  margin-right: 1rem;
+  border: none;
+  outline: none;
+  border-radius: 2rem;
+  padding-left: 2rem;
+}
+
+.budget {
+  align-self: center;
+  justify-self: center;
+}
+
+/* MOVIE INFO */
+
+.movie-info {
+  background-position: 0%;
+  background-size: cover;
+  position: absolute;
+  top: 4rem;
+  bottom: 0;
+  width: 100%;
+}
+
+h1.movie-name {
+  text-align: center;
+  margin: 0;
+}
+
+.movie-info-card {
+  width: 25%;
+  background-color: white;
+  border: solid 1px grey;
+  border-radius: 1rem;
+  padding: 1rem;
+  margin: 1rem;
 }
