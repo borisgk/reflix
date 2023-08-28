@@ -1,18 +1,20 @@
 import React from "react"
-import { useState, useEffect } from "react"
-import * as Constants from "../Settings"
+import { useEffect } from "react"
 import MovieCard from "./MovieCard"
 import SearchBar from "./SearchBar"
+import Modal from "./Modal"
 
-export default function Catalog({movies, currentUser, search, rent}) {
+export default function Catalog({movies, currentUser, search, rent, showModal, closeModal, rentedMovie}) {
 
 
 useEffect(() => {
     search("")
 }, [])
 
+
     return (
         <div>
+            <Modal showModal={showModal} closeModal={closeModal} movie={rentedMovie} />
             <SearchBar searchFun = {search} user = {currentUser} /> 
             {currentUser ? currentUser.rentals.length > 0
             ?

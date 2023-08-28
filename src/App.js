@@ -13,9 +13,8 @@ function App() {
   let [currentUser, setCurrentUser] = useState(null)
   let [users, setUsers] = useState(Constants.USERS)
   let [someMovies, setSomeMovies] = useState([])
-
-  // User info - this is not a state
-  let userInfo = {}
+  let [showModal, setShowModal] = useState(false)
+  let [rentedMovie, setRentedMovie] = useState(null)
 
   async function getSomeMovies() {
     let response = await fetch(Constants.API_QUERY, Constants.API_OPTIONS)
@@ -31,7 +30,7 @@ function App() {
   // Update movies on change in users - rent or unrent
   useEffect(() => {
     getSomeMovies()
-  }, users)
+  }, [users])
   
   function setUser(id) {
     setCurrentUser(users.find(user => user.id === id))
@@ -43,17 +42,18 @@ function App() {
 
   function rentMovie(movie, user, action) {
     if (action) {
-      if (!isRented(user, movie) && numRented(user) < 6) {
+      if (!isRented(user, movie) && numRented(user) < 5) {
         let newUsers = [...users]
         newUsers.find(u => u.id === user.id).rentals.push(movie)
-        console.log(newUsers)
         setUsers(newUsers)
+        setRentedMovie(movie)
+        setShowModal(true)
       }
     } else {
       let newRentals = [...user.rentals]
       console.log(newRentals)
       let filtered = newRentals.filter(r => {
-        return r.id != movie.id
+        return r.id !== movie.id
       })
       let newUsers = [...users]
       newUsers.find(u => u.id === user.id).rentals = [...filtered]
@@ -85,6 +85,13 @@ function App() {
 }
 
 
+function closeModal() {
+  if (showModal) {
+    setShowModal(false)
+  } 
+}
+
+
   return (
     <Router>
       <div className="App">
@@ -93,7 +100,7 @@ function App() {
       <Routes>
         <Route path="/" element={<Landing users={users} setUser = {setUser} />} />
         <Route path="/users/:userID" element={<UserProfile />} />
-        <Route path="/catalog" element={<Catalog movies={someMovies} currentUser={currentUser} search = {searchMovies} rent={rentMovie}/>} />
+        <Route path="/catalog" element={<Catalog movies={someMovies} currentUser={currentUser} search = {searchMovies} rent={rentMovie} showModal={showModal} closeModal={closeModal} rentedMovie={rentedMovie} />} />
         <Route path="/movie/:movieID" element ={<Movie />} />
       </Routes>
     </Router>

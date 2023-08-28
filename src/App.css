@@ -185,3 +185,9 @@ h1.movie-name {
   padding: 1rem;
   margin: 1rem;
 }
+
+.movie-gif {
+  border: none;
+  margin: auto;
+  margin-top: 2rem;
+}
